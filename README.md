@@ -1,8 +1,8 @@
-# 🗂️ Team Task Manager
+# Team Task Manager
 
 A **production-ready, full-stack Team Task Manager** with authentication, role-based access control, project management, Kanban task tracking, and a real-time admin dashboard.
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 ### Backend
 - **Node.js + Express.js** — REST API
@@ -21,17 +21,17 @@ A **production-ready, full-stack Team Task Manager** with authentication, role-b
 - **@hello-pangea/dnd** — Kanban drag & drop
 - **Lucide React** — Icons
 
-## ✨ Features
+## Features
 
-- 🔐 **Authentication** — Register, login, JWT access/refresh tokens, httpOnly cookies
-- 👥 **Role-Based Access Control** — Global admin & project-level roles
-- 📊 **Dashboard** — Stat cards, donut chart (task status), bar chart (priority), overdue table
-- 📁 **Project Management** — CRUD projects, add/remove members, search & filter
-- 📋 **Kanban Board** — Drag-and-drop tasks across TODO → IN_PROGRESS → IN_REVIEW → DONE
-- 🛡️ **Admin Panel** — User management, login history, activity logs, user deletion
-- 📝 **Activity Logging** — Tracks login/logout, project/task CRUD, member changes
+- **Authentication** — Register, login, JWT access/refresh tokens, httpOnly cookies
+- **Role-Based Access Control** — Global admin & project-level roles
+- **Dashboard** — Stat cards, donut chart (task status), bar chart (priority), overdue table
+- **Project Management** — CRUD projects, add/remove members, search & filter
+- **Kanban Board** — Drag-and-drop tasks across TODO → IN_PROGRESS → IN_REVIEW → DONE
+- **Admin Panel** — User management, login history, activity logs, user deletion
+- **Activity Logging** — Tracks login/logout, project/task CRUD, member changes
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+
@@ -87,7 +87,7 @@ Visit **http://localhost:5173**
 | Member | bob@demo.com    | Member@1234  |
 | Member | carol@demo.com  | Member@1234  |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 team-task-manager/
@@ -113,33 +113,33 @@ team-task-manager/
 └── README.md
 ```
 
-## 📜 API Endpoints
+## API Endpoints
 
 | Method | Endpoint                          | Description              | Auth  |
 |--------|-----------------------------------|--------------------------|-------|
-| POST   | `/api/auth/register`              | Register user            | ❌    |
-| POST   | `/api/auth/login`                 | Login                    | ❌    |
-| POST   | `/api/auth/refresh`               | Refresh token            | ❌    |
-| POST   | `/api/auth/logout`                | Logout                   | ✅    |
-| GET    | `/api/auth/me`                    | Current user             | ✅    |
-| GET    | `/api/projects`                   | List projects            | ✅    |
-| POST   | `/api/projects`                   | Create project           | ✅    |
-| GET    | `/api/projects/:id`               | Project details          | ✅    |
-| PUT    | `/api/projects/:id`               | Update project           | ✅ 🛡️ |
-| DELETE | `/api/projects/:id`               | Delete project           | ✅ 🛡️ |
-| POST   | `/api/projects/:id/members`       | Add member               | ✅ 🛡️ |
-| GET    | `/api/tasks/project/:projectId`   | List project tasks       | ✅    |
-| POST   | `/api/tasks/project/:projectId`   | Create task              | ✅    |
-| PATCH  | `/api/tasks/:id/status`           | Update task status       | ✅    |
-| DELETE | `/api/tasks/:id`                  | Delete task              | ✅    |
-| GET    | `/api/dashboard/stats`            | Dashboard statistics     | ✅    |
-| GET    | `/api/dashboard/overdue`          | Overdue tasks            | ✅    |
-| GET    | `/api/admin/activity-logs`        | Activity logs            | ✅ 👑 |
-| GET    | `/api/admin/login-history`        | Login history            | ✅ 👑 |
-| DELETE | `/api/admin/users/:id`            | Delete user              | ✅ 👑 |
+| POST   | `/api/auth/register`              | Register user            | No    |
+| POST   | `/api/auth/login`                 | Login                    | No    |
+| POST   | `/api/auth/refresh`               | Refresh token            | No    |
+| POST   | `/api/auth/logout`                | Logout                   | Yes   |
+| GET    | `/api/auth/me`                    | Current user             | Yes   |
+| GET    | `/api/projects`                   | List projects            | Yes   |
+| POST   | `/api/projects`                   | Create project           | Yes   |
+| GET    | `/api/projects/:id`               | Project details          | Yes   |
+| PUT    | `/api/projects/:id`               | Update project           | Admin |
+| DELETE | `/api/projects/:id`               | Delete project           | Admin |
+| POST   | `/api/projects/:id/members`       | Add member               | Admin |
+| GET    | `/api/tasks/project/:projectId`   | List project tasks       | Yes   |
+| POST   | `/api/tasks/project/:projectId`   | Create task              | Yes   |
+| PATCH  | `/api/tasks/:id/status`           | Update task status       | Yes   |
+| DELETE | `/api/tasks/:id`                  | Delete task              | Yes   |
+| GET    | `/api/dashboard/stats`            | Dashboard statistics     | Yes   |
+| GET    | `/api/dashboard/overdue`          | Overdue tasks            | Yes   |
+| GET    | `/api/admin/activity-logs`        | Activity logs            | Global|
+| GET    | `/api/admin/login-history`        | Login history            | Global|
+| DELETE | `/api/admin/users/:id`            | Delete user              | Global|
 
-✅ = Auth required · 🛡️ = Project admin · 👑 = Global admin only
+Auth required = Yes · Project admin = Admin · Global admin only = Global
 
-## 📄 License
+## License
 
 MIT
