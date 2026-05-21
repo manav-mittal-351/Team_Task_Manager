@@ -8,7 +8,7 @@ const statusColors = { TODO: '#64748b', IN_PROGRESS: '#3b82f6', IN_REVIEW: '#a85
 const priorityColors = { LOW: '#94a3b8', MEDIUM: '#3b82f6', HIGH: '#f59e0b', URGENT: '#ef4444' };
 
 export default function Dashboard() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['dashboardStats'],
     queryFn: async () => {
       const [s, o] = await Promise.all([api.get('/dashboard/stats'), api.get('/dashboard/overdue')]);
@@ -20,6 +20,13 @@ export default function Dashboard() {
     <div className="space-y-6 animate-pulse">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">{[...Array(4)].map((_, i) => <div key={i} className="h-32 bg-slate-200 dark:bg-slate-800 rounded-2xl" />)}</div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">{[...Array(2)].map((_, i) => <div key={i} className="h-80 bg-slate-200 dark:bg-slate-800 rounded-2xl" />)}</div>
+    </div>
+  );
+
+  if (isError || !data) return (
+    <div className="p-6 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl border border-red-200 dark:border-red-800">
+      <p className="font-semibold">Failed to load dashboard data.</p>
+      <p className="text-sm mt-1">Please check your internet connection or try logging in again.</p>
     </div>
   );
 
